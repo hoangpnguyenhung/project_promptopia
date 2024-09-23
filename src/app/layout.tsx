@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 import "../styles/globals.css";
 import Nav from "@/components/Nav";
 import Provider from "@/components/Provider";
@@ -16,14 +16,16 @@ const RootLayout: React.FC<Props> = ({ children }) => {
     <html lang="en">
       <body>
         <Provider>
-          <div className="main">
-            <div className="gradient" />
-          </div>
+          <Suspense>
+            <div className="main">
+              <div className="gradient" />
+            </div>
 
-          <main className="app">
-            <Nav />
-            {children}
-          </main>
+            <main className="app">
+              <Nav />
+              {children}
+            </main>
+          </Suspense>
         </Provider>
       </body>
     </html>
